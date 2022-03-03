@@ -1,7 +1,7 @@
 <?php
 $user = 'root';
 $password = '';
-$db = 'data_base';
+$db = 'blog';
 $host = 'localhost:3307';
 
 $dsn = 'mysql:host=' . $host . ';dbname=' . $db;

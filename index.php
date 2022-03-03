@@ -10,52 +10,6 @@
 </head>
 
 <body>
-    <?php
-    function debug($debug)
-    {
-        var_dump($debug);
-    }
-
-
-    function decodeJsonFromUrl(string $url)
-    {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
-        if (curl_exec($ch)) {
-            $result = curl_exec($ch);
-            curl_close($ch);
-            return json_decode($result);
-        } else {
-            exit("Неудалось подключится к URL-адресу: $url");
-        }
-    }
-
-    $arr = [
-        "posts" => "https://jsonplaceholder.typicode.com/posts",
-        "comments" => "https://jsonplaceholder.typicode.com/comments"
-    ];
-
-    $posts = decodeJsonFromUrl($arr["posts"]);
-    #$comments = decodeJsonFromUrl($arr["comments"]);
-    print_r($posts);
-    # Подключение к базе данных
-    require_once("mysql_connect");
-    foreach ($posts as $post) {
-        $userId = $post->userId;
-        $title = $post->title;
-        $body = $post->body;
-    }
-
-
-
-
-
-    ?>
-
-
-
-
 
 
 
