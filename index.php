@@ -10,24 +10,22 @@
 </head>
 
 <body>
-
-
-
-    <!--
-    <div class="container text-center">
-        <h2>Поиск</h2>
-        <form action="#" method="post" class="form-control-sm row g-3">
-            <div class="col-3">
-            </div>
-            <div class="col-5">
-                <input class="form-control form-control-lg" type="text" placeholder="Поиск">
-            </div>
-            <div class="col-1">
-                <input type="button" value="Найти" class="btn btn-success mt-1">
-            </div>
+    <div class="container text-center mt-5" style="width: 500px;">
+        <h1>Поиск комментарий</h1>
+        <br>
+        <form action="#" method="post" class="d-flex">
+            <input type="text" id="suggestion" class="form-control form-control-lg" placeholder="Поиск">
+            <input type="button" id="find" value="Найти" class="btn btn-success btn-lg mblank-2  ms-2">
         </form>
+        <div hidden class="alert alert-danger my-3">Комментария с (словом) не существует</div>
     </div>
-    -->
+
+    <?php
+
+    ?>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="find_comment.js"></script>
 </body>
 
 </html>
