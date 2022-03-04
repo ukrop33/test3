@@ -14,7 +14,7 @@
         <h1>Поиск в комментариях</h1>
         <br>
         <form action="#" method="post" class="d-flex">
-            <input value="enim" type="text" id="suggestion" class="form-control form-control-lg" placeholder="Поиск">
+            <input value="laudanti" type="text" id="suggestion" class="form-control form-control-lg" placeholder="Поиск">
             <input type="button" id="find" value="Найти" class="btn btn-success btn-lg mblank-2  ms-2">
         </form>
         <div id="errorBlock" class="alert alert-danger my-3" style="display:none;"></div>

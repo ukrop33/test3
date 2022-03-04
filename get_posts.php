@@ -5,7 +5,6 @@ if ($_POST['suggestion'] !== "") {
         require_once 'mysql_connect.php';
         $suggestion_like = "%" . $suggestion . "%";
         $sql = "SELECT c.post_id,
-                    c.id AS \"comment_id\",
                     c.email,
                     p.title AS \"post_title\",
                     c.body AS \"comment\"

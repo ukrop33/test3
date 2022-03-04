@@ -36,7 +36,7 @@ $('#find').click(function() {
             postsEl.innerHTML = '<div hidden id="post" class="bg-light rounded col p-3 m-3"></div>';
 
             var parentElement = document.getElementById("post");
-            var theFirstChild = parentElement.firstChild;
+            //var theFirstChild = parentElement.firstChild;
             var postElement = document.createElement("div");
             postElement.className = "bg-light rounded col p-3 m-3";
 
@@ -65,7 +65,7 @@ $('#find').click(function() {
                         '</li></ul></div></div>';
                     postElement = document.createElement("div");
                     postElement.innerHTML = html;
-                    parentElement.after(postElement, theFirstChild);
+                    parentElement.after(postElement);
                     console.log("ЯЗДЕСЬ!!!!");
                     break;
                 } else if (data[i].post_id === data[i + 1].post_id) {
@@ -99,7 +99,7 @@ $('#find').click(function() {
                     }
                     postElement = document.createElement("div");
                     postElement.innerHTML = html;
-                    parentElement.after(postElement, theFirstChild);
+                    parentElement.after(postElement);
 
                 } else {
                     var html =
@@ -113,7 +113,7 @@ $('#find').click(function() {
                     i++;
                     postElement = document.createElement("div");
                     postElement.innerHTML = html;
-                    parentElement.after(postElement, theFirstChild);
+                    parentElement.after(postElement);
                 }
 
             }
