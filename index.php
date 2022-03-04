@@ -19,7 +19,6 @@
         </form>
         <div id="errorBlock" class="alert alert-danger my-3" style="display:none;"></div>
     </div>
-
     <div class="container my-5 row-1">
         <h2 class="text-center">Результаты:</h2>
         <div id="posts">

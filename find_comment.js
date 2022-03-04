@@ -19,16 +19,16 @@ $('#find').click(function() {
         success: function(data) {
             if (data === "1") {
                 $('#errorBlock').show();
-                $('#errorBlock').text("Введите что нибудь");
-                setTimeout(function(){$("#errorBlock").hide();},3000);
+                $('#errorBlock').text("Введите что нибудь!");
+                setTimeout(function() { $("#errorBlock").hide(); }, 3000);
             } else if (data === "2") {
                 $('#errorBlock').show();
-                $('#errorBlock').text("Введите минимум 3 или более символов");
-                setTimeout(function(){$("#errorBlock").hide();},3000);
+                $('#errorBlock').text("Введите минимум 3, но не более 30 символов!");
+                setTimeout(function() { $("#errorBlock").hide(); }, 3000);
             } else if (data === "3") {
                 $('#errorBlock').show();
                 $('#errorBlock').text("Ничего не найдено!");
-                setTimeout(function(){$("#errorBlock").hide();},3000);
+                setTimeout(function() { $("#errorBlock").hide(); }, 3000);
             }
             data = JSON.parse(data);
 
@@ -45,6 +45,7 @@ $('#find').click(function() {
 
 
             for (; i <= data.length;) {
+
                 if (data.length < i + 1) {
                     break;
                 }
@@ -62,9 +63,10 @@ $('#find').click(function() {
                         '<span"><em>' + commentEmail + '</em></span>' +
                         '<p class="lead">' + comment + '</p>' +
                         '</li></ul></div></div>';
-                    postElement = document.createElement("div")
+                    postElement = document.createElement("div");
                     postElement.innerHTML = html;
                     parentElement.after(postElement, theFirstChild);
+                    console.log("ЯЗДЕСЬ!!!!");
                     break;
                 } else if (data[i].post_id === data[i + 1].post_id) {
 
@@ -91,12 +93,11 @@ $('#find').click(function() {
                         }
                     }
                     html += '</div>';
-                    
                     i += k;
                     if (i + 1 >= data.length) {
                         i = data.length;
                     }
-                    postElement = document.createElement("div")
+                    postElement = document.createElement("div");
                     postElement.innerHTML = html;
                     parentElement.after(postElement, theFirstChild);
 
@@ -110,7 +111,7 @@ $('#find').click(function() {
                         '<p class="lead">' + comment + '</p>' +
                         '</li></ul></div></div>';
                     i++;
-                    postElement = document.createElement("div")
+                    postElement = document.createElement("div");
                     postElement.innerHTML = html;
                     parentElement.after(postElement, theFirstChild);
                 }
@@ -118,7 +119,6 @@ $('#find').click(function() {
             }
             isShowed = 1;
         }
-
     });
 });
 /*

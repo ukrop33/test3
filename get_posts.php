@@ -1,7 +1,7 @@
 <?php
 if ($_POST['suggestion'] !== "") {
     $suggestion = trim($_POST['suggestion']);
-    if (!(strlen($suggestion) <= 3)) {
+    if (!(strlen($suggestion) <= 3) && !(strlen($suggestion) >= 30)) {
         require_once 'mysql_connect.php';
         $suggestion_like = "%" . $suggestion . "%";
         $sql = "SELECT c.post_id,
@@ -17,7 +17,7 @@ if ($_POST['suggestion'] !== "") {
         $query->execute([$suggestion_like]);
         $result = $query->fetchAll(PDO::FETCH_OBJ);
         foreach ($result as $post) {
-            $highlight = "<mark>".$suggestion."</mark>";
+            $highlight = "<mark>" . $suggestion . "</mark>";
             $str = str_replace($suggestion, $highlight, $post->comment);
             $post->comment = $str;
         }
@@ -30,7 +30,7 @@ if ($_POST['suggestion'] !== "") {
         }
         #var_dump($result);
     } else {
-        echo "2"; // более 3 символов
+        echo "2"; // диапазон от 3 до 30 символов
         die();
     }
 } else {
