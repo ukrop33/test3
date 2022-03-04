@@ -17,12 +17,13 @@
             <input value="enim" type="text" id="suggestion" class="form-control form-control-lg" placeholder="Поиск">
             <input type="button" id="find" value="Найти" class="btn btn-success btn-lg mblank-2  ms-2">
         </form>
-        <div id="errorBlock" class="alert alert-danger my-3"></div>
+        <div id="errorBlock" class="alert alert-danger my-3" style="display:none;"></div>
     </div>
 
     <div class="container my-5 row-1">
         <h2 class="text-center">Результаты:</h2>
         <div id="posts">
+            <!--
             <div hidden id="post" class="bg-light rounded col p-3 m-3">
 
                 <h4 id="post_title" class="text-center"></h4>
@@ -34,6 +35,7 @@
                     </li>
                 </ul>
             </div>
+            -->
         </div>
 
     </div>

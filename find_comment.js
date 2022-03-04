@@ -1,18 +1,13 @@
-$('#errorBlock').hide();
+var isShowed = 0;
 $('#find').click(function() {
-    var suggestion = $('#suggestion').val();
-    //$('#errorBlock').hide();
-    /*
-        var d = $("#posts .bg-light.rounded.col.p-3.m-3").toArray().map(el => el.id);
-        console.log(d);
-
-        for (let num = 0; num < d.length; num++) {
-            const post_id = d[num];
-
-            
+    if (isShowed) {
+        isShowed = 0;
+        var element = document.getElementById("posts");
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
         }
-    */
-    //console.log('Привет');
+    }
+    var suggestion = $('#suggestion').val();
     $.ajax({
         url: 'get_posts.php',
         type: 'POST',
@@ -23,25 +18,28 @@ $('#find').click(function() {
         dataType: 'html',
         success: function(data) {
             if (data === "1") {
-                $('#errorBlock').hide();
                 $('#errorBlock').show();
                 $('#errorBlock').text("Введите что нибудь");
+                setTimeout(function(){$("#errorBlock").hide();},3000);
             } else if (data === "2") {
-                $('#errorBlock').hide();
                 $('#errorBlock').show();
                 $('#errorBlock').text("Введите минимум 3 или более символов");
+                setTimeout(function(){$("#errorBlock").hide();},3000);
             } else if (data === "3") {
-                $('#errorBlock').hide();
                 $('#errorBlock').show();
                 $('#errorBlock').text("Ничего не найдено!");
+                setTimeout(function(){$("#errorBlock").hide();},3000);
             }
-            $('#errorBlock').hide();
             data = JSON.parse(data);
+
+            var postsEl = document.getElementById("posts");
+            postsEl.innerHTML = '<div hidden id="post" class="bg-light rounded col p-3 m-3"></div>';
 
             var parentElement = document.getElementById("post");
             var theFirstChild = parentElement.firstChild;
             var postElement = document.createElement("div");
             postElement.className = "bg-light rounded col p-3 m-3";
+
             let i = 0
             var postNumber = 0;
 
@@ -54,6 +52,7 @@ $('#find').click(function() {
                 var postTitle = data[i].post_title;
                 var commentEmail = data[i].email;
                 var comment = data[i].comment;
+
                 if (data.length - 1 == i) {
                     var html =
                         '<div id="post' + postNumber + '" class="bg-light rounded col p-3 m-3">' +
@@ -78,10 +77,9 @@ $('#find').click(function() {
                         '<span"><em>' + data[i].email + '</em></span>' +
                         '<p class="lead">' + data[i].comment + '</p>' +
                         '</li> </ul> </div>';
-                    let k = 1;
 
+                    let k = 1;
                     while (data[i].post_id === data[i + k].post_id) {
-                        //console.log(i + k);
                         html +=
                             '<div> <ul> <li>' +
                             '<span"><em>' + data[i + k].email + '</em></span>' +
@@ -93,6 +91,7 @@ $('#find').click(function() {
                         }
                     }
                     html += '</div>';
+                    
                     i += k;
                     if (i + 1 >= data.length) {
                         i = data.length;
@@ -117,17 +116,12 @@ $('#find').click(function() {
                 }
 
             }
+            isShowed = 1;
         }
 
     });
-    /*
-    var element = document.getElementById("posts");
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-    */
 });
-
+/*
 let array = [
     [1, 1],
     [1, 2],
@@ -166,3 +160,4 @@ for (let num = 0; num <= array.length;) {
         num++;
     }
 }
+*/
